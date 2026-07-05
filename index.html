@@ -36,7 +36,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 @media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
 
 /* HERO */
-.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem 3rem;position:relative;overflow:hidden;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.25;pointer-events:none;}
 .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(91,173,143,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:700px;}
@@ -66,10 +66,9 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-card-art-panda{background:linear-gradient(135deg,#1a2e28,#0d1f1a);}
 .game-card-art-sudoku{background:linear-gradient(135deg,#1a1e2e,#0d0f1f);}
 
-.game-icon{width:100px;height:100px;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:cover;}
-.game-icon-placeholder{width:100px;height:100px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
-.panda-placeholder{background:linear-gradient(135deg,#2d6b52,#1a4a38);}
-.sudoku-placeholder{background:linear-gradient(135deg,#2d3d6b,#1a2448);}
+.card-banner{position:absolute;top:-25%;left:0;width:100%;height:150%;background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.15) 0%,rgba(14,14,15,0.45) 65%,rgba(14,14,15,0.8) 100%);z-index:0;}
+.game-logo{position:relative;z-index:1;max-width:170px;width:55%;height:auto;filter:drop-shadow(0 12px 30px rgba(0,0,0,0.55));}
 
 .game-accent-bar{position:absolute;bottom:0;left:0;right:0;height:3px;}
 .game-accent-panda{background:var(--panda);}
@@ -159,7 +158,9 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
     <a href="pandahunt.html" class="game-card panda reveal">
       <div class="game-card-art game-card-art-panda">
-        <img src="images/phlogo.png" alt="Panda Hunt logo" class="game-icon">
+        <div class="card-banner" data-banner style="background-image:url('images/bannerph.png')"></div>
+        <div class="card-overlay"></div>
+        <img src="images/phlogo.png" alt="Panda Hunt logo" class="game-logo">
         <div class="game-accent-bar game-accent-panda"></div>
       </div>
       <div class="game-card-body">
@@ -179,7 +180,9 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
     <a href="bearlysudoku.html" class="game-card sudoku reveal d1">
       <div class="game-card-art game-card-art-sudoku">
-        <img src="images/bslogo.png" alt="Bearly Sudoku logo" class="game-icon">
+        <div class="card-banner" data-banner style="background-image:url('images/bannerbs.png')"></div>
+        <div class="card-overlay"></div>
+        <img src="images/bslogo.png" alt="Bearly Sudoku logo" class="game-logo">
         <div class="game-accent-bar game-accent-sudoku"></div>
       </div>
       <div class="game-card-body">
@@ -230,6 +233,17 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+const cardBanners=document.querySelectorAll('[data-banner]');
+function updateCardParallax(){
+  cardBanners.forEach(banner=>{
+    const rect=banner.parentElement.getBoundingClientRect();
+    const center=rect.top+rect.height/2;
+    const offset=(window.innerHeight/2-center)*0.12;
+    banner.style.transform=`translateY(${offset}px)`;
+  });
+}
+window.addEventListener('scroll',()=>requestAnimationFrame(updateCardParallax));
+updateCardParallax();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.hero .reveal').forEach(el=>setTimeout(()=>el.classList.add('visible'),80));
