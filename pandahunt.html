@@ -25,6 +25,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 
 /* HERO */
 .hero{background:linear-gradient(135deg,#0d1f1a 0%,#0E0E0F 60%);border-bottom:1px solid var(--border);padding:6rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden;}
+.hero-banner{position:absolute;top:-15%;left:0;width:100%;height:130%;background-image:url('images/bannerph.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.55) 0%,rgba(14,14,15,0.75) 55%,var(--black) 100%);z-index:0;}
 .hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(91,173,143,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:660px;margin:0 auto;}
 .breadcrumb{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
@@ -104,10 +106,12 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 </div>
 
 <section class="hero">
+  <div class="hero-banner" id="heroBanner"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
     <p class="breadcrumb"><a href="index.html">Games</a> / Panda Hunt</p>
-    <div class="hero-icon">🐼</div>
+    <div class="hero-icon"><img src="images/phlogo.png" alt="Panda Hunt logo" style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></div>
     <h1>Panda Hunt</h1>
     <p class="hero-tagline">The cozy fantasy puzzle game where every tile hides a secret.</p>
     <a href="https://apps.apple.com/us/app/panda-hunt/id6777240696" target="_blank" class="dl-btn">Download on the App Store</a>
@@ -199,6 +203,10 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+const heroBanner=document.getElementById('heroBanner');
+function updateParallax(){if(heroBanner){heroBanner.style.transform=`translateY(${window.scrollY*0.35}px)`;}}
+window.addEventListener('scroll',()=>requestAnimationFrame(updateParallax));
+updateParallax();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.hero .reveal,.hero-content>*').forEach(el=>setTimeout(()=>el.classList.add('visible'),80));

@@ -23,6 +23,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 .mobile-menu.open{display:flex;}
 @media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
 .hero{background:linear-gradient(135deg,#0d0f1f 0%,#0E0E0F 60%);border-bottom:1px solid var(--border);padding:6rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden;}
+.hero-banner{position:absolute;top:-15%;left:0;width:100%;height:130%;background-image:url('images/bannerbs.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.55) 0%,rgba(14,14,15,0.75) 55%,var(--black) 100%);z-index:0;}
 .hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(123,147,212,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:660px;margin:0 auto;}
 .breadcrumb{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
@@ -31,12 +33,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;}
 .hero-tagline{font-style:italic;font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem;}
 .soon-badge{display:inline-block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--sudoku);border:1px solid rgba(123,147,212,0.35);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;}
-.notify-form{display:flex;gap:0.5rem;max-width:380px;margin:1.5rem auto 0;}
-.notify-form input{flex:1;background:var(--off);border:1px solid var(--border);border-radius:100px;padding:0.75rem 1.2rem;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;}
-.notify-form input:focus{border-color:var(--sudoku);}
-.notify-form input::placeholder{color:var(--muted);}
-.notify-btn{background:var(--sudoku);color:var(--black);font-family:'Syne',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.75rem 1.4rem;border-radius:100px;border:none;cursor:pointer;transition:opacity 0.2s;white-space:nowrap;}
-.notify-btn:hover{opacity:0.85;}
 .content{max-width:860px;margin:0 auto;padding:5rem 2.5rem;}
 .sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;}
 .sec-label-line{flex:1;height:1px;background:var(--border);}
@@ -90,18 +86,17 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 </div>
 
 <section class="hero">
+  <div class="hero-banner" id="heroBanner"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
     <p class="breadcrumb"><a href="index.html">Games</a> / Bearly Sudoku</p>
-    <div class="hero-icon">🧩</div>
+    <div class="hero-icon"><img src="images/bslogo.png" alt="Bearly Sudoku logo" style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></div>
     <h1>Bearly Sudoku</h1>
     <p class="hero-tagline">A cozy puzzle adventure from Bearly Employed.</p>
     <div class="soon-badge">Coming soon to iOS</div>
-    <div class="notify-form">
-      <input type="email" placeholder="your@email.com">
-      <button class="notify-btn">Notify me</button>
-    </div>
   </div>
+
 </section>
 
 <div class="content">
@@ -160,6 +155,10 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 </footer>
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+const heroBanner=document.getElementById('heroBanner');
+function updateParallax(){if(heroBanner){heroBanner.style.transform=`translateY(${window.scrollY*0.35}px)`;}}
+window.addEventListener('scroll',()=>requestAnimationFrame(updateParallax));
+updateParallax();
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
