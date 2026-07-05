@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Bearly Employed</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0E0E0F;--off:#18181A;--border:#2E2E30;--cream:#F5F2EC;--muted:#888;--accent:#E8C44A;--panda:#5BAD8F;}
+html,body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--cream);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--cream);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--off);border-bottom:1px solid var(--border);padding:1.5rem 2rem;z-index:99;flex-direction:column;gap:1.2rem;}
+.mobile-menu a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+.mobile-menu.open{display:flex;}
+@media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
+.page-header{padding:5rem 2.5rem 3rem;text-align:center;border-bottom:1px solid var(--border);}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:var(--cream);margin-bottom:0.8rem;}
+h1 em{font-style:normal;color:var(--panda);}
+.sub{font-size:1rem;color:var(--muted);}
+.content{max-width:700px;margin:0 auto;padding:4rem 2.5rem;}
+h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:0.8rem;}
+.body-text{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;}
+.contact-card{background:var(--off);border:1px solid var(--border);border-radius:8px;padding:2.5rem;text-align:center;margin:2rem 0;}
+.contact-card p{color:var(--muted);margin-bottom:1.2rem;font-size:0.95rem;}
+.contact-btn{display:inline-block;background:var(--panda);color:var(--black);font-family:'Syne',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 2rem;border-radius:100px;transition:opacity 0.2s;}
+.contact-btn:hover{opacity:0.85;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.5rem 0;}
+.faq-q{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;}
+.faq-a{font-size:0.88rem;color:var(--muted);line-height:1.7;}
+.sec-label{display:flex;align-items:center;gap:1rem;margin:3rem 0 2rem;}
+.sec-label-line{flex:1;height:1px;background:var(--border);}
+.sec-label-text{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--cream);}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:1.5rem;list-style:none;}
+.footer-links a{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.footer-links a:hover{color:var(--cream);}
+.footer-copy{font-size:0.7rem;color:var(--border);}
+@media(max-width:600px){footer{flex-direction:column;text-align:center;align-items:center;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Bearly<span>.</span>Employed</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Games</a></li>
+    <li><a href="pandahunt.html">Panda Hunt</a></li>
+    <li><a href="bearlysudoku.html">Bearly Sudoku</a></li>
+    <li><a href="support.html" class="active">Support</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Games</a>
+  <a href="pandahunt.html">Panda Hunt</a>
+  <a href="bearlysudoku.html">Bearly Sudoku</a>
+  <a href="support.html">Support</a>
+  <a href="about.html">About</a>
+</div>
+
+<div class="page-header">
+  <h1>Support</h1>
+  <p class="sub">Need help? We're here.</p>
+</div>
+
+<div class="content">
+  <div class="contact-card">
+    <h2>Get in touch</h2>
+    <p>For any questions, bug reports, or feedback about any of our games, send us an email and we'll get back to you as soon as possible.</p>
+    <a href="mailto:bearlyemployed@gmail.com" class="contact-btn">bearlyemployed@gmail.com</a>
+  </div>
+
+  <div class="sec-label"><div class="sec-label-line"></div><div class="sec-label-text">FAQ - Panda Hunt</div><div class="sec-label-line"></div></div>
+
+  <div class="faq-item">
+    <p class="faq-q">Is Panda Hunt free to play?</p>
+    <p class="faq-a">Yes! Panda Hunt is completely free to download. There are no ads and never will be. Optional gem packs are available if you'd like to support development.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">Can I play offline?</p>
+    <p class="faq-a">Absolutely. Panda Hunt is fully offline - you can play anywhere, anytime without an internet connection.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">How do I restore my purchases?</p>
+    <p class="faq-a">Go to the Settings or Store screen in the game and tap "Restore Purchases." Make sure you're signed in to the same Apple ID you used to purchase.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">My progress disappeared - what happened?</p>
+    <p class="faq-a">Progress is saved locally on your device. If you reinstalled the app or switched devices, progress may not carry over. Contact us and we'll do our best to help.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">How do power-ups work?</p>
+    <p class="faq-a">Power-ups are found inside Lucky Gift tiles and earned through the daily spin wheel. Each one has a unique effect - discover what they do as you play!</p>
+  </div>
+
+  <div class="sec-label"><div class="sec-label-line"></div><div class="sec-label-text">Privacy</div><div class="sec-label-line"></div></div>
+  <p class="body-text">
+    <a href="privacy-pandahunt.html" style="color:var(--panda);border-bottom:1px solid rgba(91,173,143,0.3);">Panda Hunt Privacy Policy</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="privacy-bearlysudoku.html" style="color:var(--panda);border-bottom:1px solid rgba(91,173,143,0.3);">Bearly Sudoku Privacy Policy</a>
+  </p>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Bearly<span>.</span>Employed</a>
+  <ul class="footer-links">
+    <li><a href="index.html">Games</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© Bearly Employed</p>
+</footer>
+<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+</body>
+</html>
