@@ -22,7 +22,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 .mobile-menu a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
 .mobile-menu.open{display:flex;}
 @media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
-.page-header{padding:5rem 2.5rem 3rem;text-align:center;border-bottom:1px solid var(--border);}
+.page-header{padding:5rem 2.5rem 3rem;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.header-banner{position:absolute;top:-25%;left:0;width:100%;height:150%;background-image:url('images/bannersupport.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.header-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.55) 0%,rgba(14,14,15,0.75) 60%,var(--black) 100%);z-index:0;}
+.page-header h1,.page-header .sub{position:relative;z-index:1;}
 h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:var(--cream);margin-bottom:0.8rem;}
 h1 em{font-style:normal;color:var(--panda);}
 .sub{font-size:1rem;color:var(--muted);}
@@ -70,6 +73,8 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 </div>
 
 <div class="page-header">
+  <div class="header-banner" id="headerBanner"></div>
+  <div class="header-overlay"></div>
   <h1>Support</h1>
   <p class="sub">Need help? We're here.</p>
 </div>
@@ -121,6 +126,12 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   </ul>
   <p class="footer-copy">© Bearly Employed</p>
 </footer>
-<script>function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}</script>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+const headerBanner=document.getElementById('headerBanner');
+function updateParallax(){if(headerBanner){headerBanner.style.transform=`translateY(${window.scrollY*0.35}px)`;}}
+window.addEventListener('scroll',()=>requestAnimationFrame(updateParallax));
+updateParallax();
+</script>
 </body>
 </html>
