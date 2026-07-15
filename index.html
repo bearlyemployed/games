@@ -16,6 +16,7 @@
   --muted:#888;
   --panda:#5BAD8F;   /* bamboo green */
   --sudoku:#7B93D4;  /* calm blue */
+  --allfours:#D4785B; /* warm terracotta */
   --accent:#E8C44A;  /* warm gold */
 }
 html,body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;scroll-behavior:smooth;}
@@ -61,10 +62,12 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-card:hover{transform:translateY(-4px);}
 .game-card.panda:hover{border-color:var(--panda);}
 .game-card.sudoku:hover{border-color:var(--sudoku);}
+.game-card.allfours:hover{border-color:var(--allfours);}
 
 .game-card-art{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .game-card-art-panda{background:linear-gradient(135deg,#1a2e28,#0d1f1a);}
 .game-card-art-sudoku{background:linear-gradient(135deg,#1a1e2e,#0d0f1f);}
+.game-card-art-allfours{background:linear-gradient(135deg,#2e1a16,#1f0d0d);}
 
 .card-banner{position:absolute;top:-25%;left:0;width:100%;height:150%;background-size:cover;background-position:center;z-index:0;will-change:transform;}
 .card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.15) 0%,rgba(14,14,15,0.45) 65%,rgba(14,14,15,0.8) 100%);z-index:0;}
@@ -73,11 +76,13 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-accent-bar{position:absolute;bottom:0;left:0;right:0;height:3px;}
 .game-accent-panda{background:var(--panda);}
 .game-accent-sudoku{background:var(--sudoku);}
+.game-accent-allfours{background:var(--allfours);}
 
 .game-card-body{padding:1.8rem;}
 .game-tag{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
 .game-tag-panda{color:var(--panda);}
 .game-tag-sudoku{color:var(--sudoku);}
+.game-tag-allfours{color:var(--allfours);}
 .game-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:0.6rem;}
 .game-desc{font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
 .game-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.4rem;}
@@ -86,6 +91,7 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-link:hover{gap:0.6rem;}
 .game-link.panda-link{color:var(--panda);}
 .game-link.sudoku-link{color:var(--sudoku);}
+.game-link.allfours-link{color:var(--allfours);}
 
 .coming-soon-line{text-align:center;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:2.5rem;}
 
@@ -121,6 +127,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
     <li><a href="index.html" class="active">Games</a></li>
     <li><a href="pandahunt.html">Panda Hunt</a></li>
     <li><a href="bearlysudoku.html">Bearly Sudoku</a></li>
+    <li><a href="bearlyallfours.html">Bearly All Fours</a></li>
     <li><a href="support.html">Support</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
@@ -130,6 +137,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   <a href="index.html">Games</a>
   <a href="pandahunt.html">Panda Hunt</a>
   <a href="bearlysudoku.html">Bearly Sudoku</a>
+  <a href="bearlyallfours.html">Bearly All Fours</a>
   <a href="support.html">Support</a>
   <a href="about.html">About</a>
 </div>
@@ -194,6 +202,26 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
           <span class="pill">Daily challenge</span>
         </div>
         <span class="game-link sudoku-link">Learn more →</span>
+      </div>
+    </a>
+
+    <a href="bearlyallfours.html" class="game-card allfours reveal d2">
+      <div class="game-card-art game-card-art-allfours">
+        <div class="card-banner" data-banner style="background-image:url('images/bannerbaf.png')"></div>
+        <div class="card-overlay"></div>
+        <img src="images/baflogolp.png" alt="Bearly All Fours logo" class="game-logo">
+        <div class="game-accent-bar game-accent-allfours"></div>
+      </div>
+      <div class="game-card-body">
+        <p class="game-tag game-tag-allfours">Coming soon to iOS</p>
+        <h2 class="game-title">Bearly All Fours</h2>
+        <p class="game-desc">A lively 4-player card game based on the traditional Trinidad and Tobago game of All Fours - partner signs, table talk, and a run at the pack.</p>
+        <div class="game-pills">
+          <span class="pill">Card game</span>
+          <span class="pill">Multiplayer</span>
+          <span class="pill">Partner signs</span>
+        </div>
+        <span class="game-link allfours-link">Learn more →</span>
       </div>
     </a>
 

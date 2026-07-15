@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bearly Sudoku — Bearly Employed</title>
+<title>Bearly All Fours — Bearly Employed</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--black:#0E0E0F;--off:#18181A;--border:#2E2E30;--cream:#F5F2EC;--muted:#888;--sudoku:#7B93D4;--accent:#E8C44A;}
+:root{--black:#0E0E0F;--off:#18181A;--border:#2E2E30;--cream:#F5F2EC;--muted:#888;--allfours:#D4785B;--accent:#E8C44A;}
 html,body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;}
 a{color:inherit;text-decoration:none;}
 nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
@@ -22,35 +22,34 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-fi
 .mobile-menu a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
 .mobile-menu.open{display:flex;}
 @media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
-.hero{background:linear-gradient(135deg,#0d0f1f 0%,#0E0E0F 60%);border-bottom:1px solid var(--border);padding:6rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden;}
-.hero-banner{position:absolute;top:-15%;left:0;width:100%;height:130%;background-image:url('images/bannerbs.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.hero{background:linear-gradient(135deg,#2e1a16 0%,#0E0E0F 60%);border-bottom:1px solid var(--border);padding:6rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden;}
+.hero-banner{position:absolute;top:-15%;left:0;width:100%;height:130%;background-image:url('images/bannerbaf.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.55) 0%,rgba(14,14,15,0.75) 55%,var(--black) 100%);z-index:0;}
-.hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(123,147,212,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(212,120,91,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:660px;margin:0 auto;}
 .breadcrumb{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
-.breadcrumb a{color:var(--muted);}.breadcrumb a:hover{color:var(--sudoku);}
-.hero-logo{max-width:380px;width:75%;height:auto;display:block;margin:0 auto 1.5rem;filter:drop-shadow(0 20px 50px rgba(123,147,212,0.35));}
-h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.5rem;}
+.breadcrumb a{color:var(--muted);}.breadcrumb a:hover{color:var(--allfours);}
+.hero-logo{max-width:380px;width:75%;height:auto;display:block;margin:0 auto 1.5rem;filter:drop-shadow(0 20px 50px rgba(212,120,91,0.35));}
 .hero-tagline{font-style:italic;font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem;}
-.soon-badge{display:inline-block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--sudoku);border:1px solid rgba(123,147,212,0.35);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;}
+.soon-badge{display:inline-block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--allfours);border:1px solid rgba(212,120,91,0.35);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;}
 .content{max-width:860px;margin:0 auto;padding:5rem 2.5rem;}
 .sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;}
 .sec-label-line{flex:1;height:1px;background:var(--border);}
 .sec-label-text{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
 h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--cream);margin-bottom:1rem;}
-h2 em{font-style:normal;color:var(--sudoku);}
+h2 em{font-style:normal;color:var(--allfours);}
 .body-text{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;}
 .modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
 @media(max-width:640px){.modes-grid{grid-template-columns:1fr;}}
 .mode-card{background:var(--off);border:1px solid var(--border);border-radius:6px;padding:1.5rem;transition:border-color 0.2s;}
-.mode-card:hover{border-color:var(--sudoku);}
+.mode-card:hover{border-color:var(--allfours);}
 .mode-icon{font-size:1.5rem;margin-bottom:0.7rem;}
 .mode-title{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;}
 .mode-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
 .features-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:1.5rem 0;}
 @media(max-width:560px){.features-list{grid-template-columns:1fr;}}
 .features-list li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.92rem;color:var(--muted);padding:0.6rem 0;border-bottom:1px solid var(--border);}
-.features-list li span{color:var(--sudoku);flex-shrink:0;}
+.features-list li span{color:var(--allfours);flex-shrink:0;}
 .divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
 footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--cream);}
@@ -71,8 +70,8 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   <ul class="nav-links">
     <li><a href="index.html">Games</a></li>
     <li><a href="pandahunt.html">Panda Hunt</a></li>
-    <li><a href="bearlysudoku.html" class="active">Bearly Sudoku</a></li>
-    <li><a href="bearlyallfours.html">Bearly All Fours</a></li>
+    <li><a href="bearlysudoku.html">Bearly Sudoku</a></li>
+    <li><a href="bearlyallfours.html" class="active">Bearly All Fours</a></li>
     <li><a href="support.html">Support</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
@@ -92,9 +91,9 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <p class="breadcrumb"><a href="index.html">Games</a> / Bearly Sudoku</p>
-    <img src="images/bslogo.png" alt="Bearly Sudoku" class="hero-logo">
-    <p class="hero-tagline">A cozy puzzle adventure from Bearly Employed.</p>
+    <p class="breadcrumb"><a href="index.html">Games</a> / Bearly All Fours</p>
+    <img src="images/baflogolp.png" alt="Bearly All Fours" class="hero-logo">
+    <p class="hero-tagline">A Trinidad and Tobago card game classic, brought to your phone.</p>
     <div class="soon-badge">Coming soon to iOS</div>
   </div>
 
@@ -102,25 +101,25 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
 <div class="content">
   <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">About the game</div><div class="sec-label-line"></div></div>
-  <h2 class="reveal">Sudoku as a <em>journey.</em></h2>
-  <p class="body-text reveal d1">Bearly Sudoku is a nature-themed Sudoku game for iOS that turns a classic puzzle into a relaxing journey through beautiful worlds. Whether you're a complete beginner or a seasoned solver, there's a mode made for you.</p>
+  <h2 class="reveal">All Fours, <em>your way.</em></h2>
+  <p class="body-text reveal d1">Bearly All Fours brings the traditional Trinidad and Tobago card game to iOS - four players, two partnerships, and all the beg, stand, and run-the-pack drama of the real thing. Play with friends or take on the AI, complete with partner signs and table talk.</p>
 
   <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">Play your way</div><div class="sec-label-line"></div></div>
   <div class="modes-grid">
     <div class="mode-card reveal">
-      <div class="mode-icon">🗺️</div>
-      <p class="mode-title">Adventure Mode</p>
-      <p class="mode-desc">Progress through hand-crafted levels across multiple worlds, earning stars and companions along the way.</p>
+      <div class="mode-icon">🎮</div>
+      <p class="mode-title">Multiplayer</p>
+      <p class="mode-desc">Play live with friends and family over the network - real 2v2 partnership action, just like around the table.</p>
     </div>
     <div class="mode-card reveal d1">
-      <div class="mode-icon">🧘</div>
-      <p class="mode-title">Zen Mode</p>
-      <p class="mode-desc">Endless calm puzzles at your chosen difficulty. No pressure, no failure - just pure puzzle flow.</p>
+      <div class="mode-icon">🔒</div>
+      <p class="mode-title">Private Table</p>
+      <p class="mode-desc">Set up a private game and invite exactly who you want - perfect for regular game nights.</p>
     </div>
     <div class="mode-card reveal d2">
-      <div class="mode-icon">📅</div>
-      <p class="mode-title">Daily Challenge</p>
-      <p class="mode-desc">One new puzzle every day, shared by players worldwide. Come back every day to keep your streak.</p>
+      <div class="mode-icon">📊</div>
+      <p class="mode-title">Stats</p>
+      <p class="mode-desc">Track your wins, hands played, and partnership record over time.</p>
     </div>
   </div>
 
@@ -128,21 +127,17 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
   <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">Features</div><div class="sec-label-line"></div></div>
   <ul class="features-list reveal d1">
-    <li><span>🌿</span> Explore lush nature-themed worlds</li>
-    <li><span>🦊</span> Unique companions with special abilities</li>
-    <li><span>🎨</span> Unlock board skins and cosmetics</li>
-    <li><span>⭐</span> Earn stars and rewards through gameplay</li>
-    <li><span>📈</span> Player profile and quest tracking</li>
-    <li><span>🆓</span> Free to play - optional cosmetic purchases</li>
-    <li><span>🌍</span> Beautiful animated board effects</li>
-    <li><span>🤝</span> Bring allies to help through tricky puzzles</li>
+    <li><span>🃏</span> Traditional Trinidad and Tobago All Fours rules</li>
+    <li><span>🤝</span> Partner signs system with AI honoring logic</li>
+    <li><span>👥</span> 4-player 2v2 partnership format</li>
+    <li><span>📶</span> Live multiplayer over GameKit</li>
+    <li><span>💬</span> Emoji reactions and commentary ticker</li>
+    <li><span>📈</span> Lifetime stats tracking</li>
+    <li><span>📱</span> Clean, haptic-driven decision UI</li>
+    <li><span>🆓</span> Free to play</li>
   </ul>
 
   <p style="text-align:center;margin-top:3rem;font-size:0.75rem;color:var(--muted);">
-    <a href="privacy-bearlysudoku.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Privacy Policy</a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="terms-bearlysudoku.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Terms of Use</a>
-    &nbsp;&nbsp;·&nbsp;&nbsp;
     <a href="support.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Support</a>
   </p>
 </div>
