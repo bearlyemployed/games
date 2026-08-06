@@ -17,6 +17,7 @@
   --panda:#5BAD8F;   /* bamboo green */
   --sudoku:#7B93D4;  /* calm blue */
   --allfours:#D4785B; /* warm terracotta */
+  --bloom:#C77DB0; /* soft orchid pink */
   --accent:#E8C44A;  /* warm gold */
 }
 html,body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;scroll-behavior:smooth;}
@@ -63,11 +64,13 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-card.panda:hover{border-color:var(--panda);}
 .game-card.sudoku:hover{border-color:var(--sudoku);}
 .game-card.allfours:hover{border-color:var(--allfours);}
+.game-card.bloom:hover{border-color:var(--bloom);}
 
 .game-card-art{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .game-card-art-panda{background:linear-gradient(135deg,#1a2e28,#0d1f1a);}
 .game-card-art-sudoku{background:linear-gradient(135deg,#1a1e2e,#0d0f1f);}
 .game-card-art-allfours{background:linear-gradient(135deg,#2e1a16,#1f0d0d);}
+.game-card-art-bloom{background:linear-gradient(135deg,#2e1a28,#1a0d1f);}
 
 .card-banner{position:absolute;top:-25%;left:0;width:100%;height:150%;background-size:cover;background-position:center;z-index:0;will-change:transform;}
 .card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.15) 0%,rgba(14,14,15,0.45) 65%,rgba(14,14,15,0.8) 100%);z-index:0;}
@@ -77,12 +80,14 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-accent-panda{background:var(--panda);}
 .game-accent-sudoku{background:var(--sudoku);}
 .game-accent-allfours{background:var(--allfours);}
+.game-accent-bloom{background:var(--bloom);}
 
 .game-card-body{padding:1.8rem;}
 .game-tag{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
 .game-tag-panda{color:var(--panda);}
 .game-tag-sudoku{color:var(--sudoku);}
 .game-tag-allfours{color:var(--allfours);}
+.game-tag-bloom{color:var(--bloom);}
 .game-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:0.6rem;}
 .game-desc{font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
 .game-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.4rem;}
@@ -92,6 +97,7 @@ h1 em{font-style:normal;color:var(--panda);}
 .game-link.panda-link{color:var(--panda);}
 .game-link.sudoku-link{color:var(--sudoku);}
 .game-link.allfours-link{color:var(--allfours);}
+.game-link.bloom-link{color:var(--bloom);}
 
 .coming-soon-line{text-align:center;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:2.5rem;}
 
@@ -128,6 +134,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
     <li><a href="pandahunt.html">Panda Hunt</a></li>
     <li><a href="bearlysudoku.html">Bearly Sudoku</a></li>
     <li><a href="bearlyallfours.html">Bearly All Fours</a></li>
+    <li><a href="banglabloom.html">Bangla Bloom</a></li>
     <li><a href="support.html">Support</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
@@ -138,6 +145,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   <a href="pandahunt.html">Panda Hunt</a>
   <a href="bearlysudoku.html">Bearly Sudoku</a>
   <a href="bearlyallfours.html">Bearly All Fours</a>
+  <a href="banglabloom.html">Bangla Bloom</a>
   <a href="support.html">Support</a>
   <a href="about.html">About</a>
 </div>
@@ -148,7 +156,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
   <div class="hero-content">
     <div class="hero-badge reveal">One-person iOS studio</div>
     <h1 class="reveal d1">Games worth<br><em>playing.</em></h1>
-    <p class="hero-sub reveal d2">No ads. No nonsense. Just cozy, handcrafted mobile games built with care - the kind I actually want to play.</p>
+    <p class="hero-sub reveal d2">No intrusive ads. No nonsense. Just cozy, handcrafted mobile games built with care - the kind I actually want to play.</p>
     <a href="#games" class="hero-cta reveal d3">See our games ↓</a>
   </div>
 </section>
@@ -175,7 +183,7 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
         <p class="game-desc">A cozy fantasy puzzle game where every tile hides a secret. Tap tiles, follow the heat, and track down every hidden panda before your turns run out.</p>
         <div class="game-pills">
           <span class="pill">Puzzle</span>
-          <span class="pill">No ads</span>
+          <span class="pill">Free to play</span>
           <span class="pill">Offline</span>
           <span class="pill">10 worlds</span>
           <span class="pill">100 levels</span>
@@ -225,6 +233,26 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
       </div>
     </a>
 
+    <a href="banglabloom.html" class="game-card bloom reveal d3">
+      <div class="game-card-art game-card-art-bloom">
+        <div class="card-banner" data-banner style="background-image:url('images/bannerbb.png')"></div>
+        <div class="card-overlay"></div>
+        <img src="images/banglabloomlogo.png" alt="Bangla Bloom logo" class="game-logo">
+        <div class="game-accent-bar game-accent-bloom"></div>
+      </div>
+      <div class="game-card-body">
+        <p class="game-tag game-tag-bloom">Coming soon to iOS</p>
+        <h2 class="game-title">Bangla Bloom</h2>
+        <p class="game-desc">Learn Bengali vocabulary through flashcard lessons, mini games, and conversations - from beginner basics to advanced fluency, growing your bloom with every lesson.</p>
+        <div class="game-pills">
+          <span class="pill">Language learning</span>
+          <span class="pill">Flashcards</span>
+          <span class="pill">Bengali</span>
+        </div>
+        <span class="game-link bloom-link">Learn more →</span>
+      </div>
+    </a>
+
   </div>
 
   <p class="coming-soon-line reveal d2">More coming soon...</p>
@@ -232,12 +260,12 @@ footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align
 
 <section class="studio-strip">
   <h2 class="reveal">Built by <em>one person.</em></h2>
-  <p class="reveal d1">Every pixel, every note, every line of code - made solo. Bearly Employed is a one-person iOS studio focused on small, polished, ad-free experiences.</p>
+  <p class="reveal d1">Every pixel, every note, every line of code - made solo. Bearly Employed is a one-person iOS studio focused on small, polished experiences.</p>
   <div class="studio-pills reveal d2">
     <span class="studio-pill">SwiftUI</span>
     <span class="studio-pill">iOS</span>
     <span class="studio-pill">Game Center</span>
-    <span class="studio-pill">No ads ever</span>
+    <span class="studio-pill">No intrusive ads</span>
     <span class="studio-pill">Offline play</span>
   </div>
 </section>
