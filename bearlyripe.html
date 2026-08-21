@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bearly Ripe — Bearly Employed</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0E0E0F;--off:#18181A;--border:#2E2E30;--cream:#F5F2EC;--muted:#888;--ripe:#D9A441;--accent:#E8C44A;}
+html,body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+nav{position:sticky;top:0;z-index:100;background:rgba(14,14,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--cream);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--cream);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--off);border-bottom:1px solid var(--border);padding:1.5rem 2rem;z-index:99;flex-direction:column;gap:1.2rem;}
+.mobile-menu a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
+.mobile-menu.open{display:flex;}
+@media(max-width:700px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}}
+.hero{background:linear-gradient(135deg,#2e2416 0%,#0E0E0F 60%);border-bottom:1px solid var(--border);padding:6rem 2.5rem 5rem;text-align:center;position:relative;overflow:hidden;}
+.hero-banner{position:absolute;top:-15%;left:0;width:100%;height:130%;background-image:url('images/bannerbr.png');background-size:cover;background-position:center;z-index:0;will-change:transform;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,15,0.55) 0%,rgba(14,14,15,0.75) 55%,var(--black) 100%);z-index:0;}
+.hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(217,164,65,0.15) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:660px;margin:0 auto;}
+.breadcrumb{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;}
+.breadcrumb a{color:var(--muted);}.breadcrumb a:hover{color:var(--ripe);}
+.hero-logo{max-width:380px;width:75%;height:auto;display:block;margin:0 auto 1.5rem;filter:drop-shadow(0 20px 50px rgba(217,164,65,0.35));}
+.hero-tagline{font-style:italic;font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem;}
+.soon-badge{display:inline-block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ripe);border:1px solid rgba(217,164,65,0.35);border-radius:100px;padding:0.35rem 1rem;margin-bottom:1rem;}
+.content{max-width:860px;margin:0 auto;padding:5rem 2.5rem;}
+.sec-label{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;}
+.sec-label-line{flex:1;height:1px;background:var(--border);}
+.sec-label-text{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--cream);margin-bottom:1rem;}
+h2 em{font-style:normal;color:var(--ripe);}
+.body-text{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;}
+.modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+@media(max-width:640px){.modes-grid{grid-template-columns:1fr;}}
+.mode-card{background:var(--off);border:1px solid var(--border);border-radius:6px;padding:1.5rem;transition:border-color 0.2s;}
+.mode-card:hover{border-color:var(--ripe);}
+.mode-icon{font-size:1.5rem;margin-bottom:0.7rem;}
+.mode-title{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;}
+.mode-desc{font-size:0.82rem;color:var(--muted);line-height:1.5;}
+.features-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin:1.5rem 0;}
+@media(max-width:560px){.features-list{grid-template-columns:1fr;}}
+.features-list li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.92rem;color:var(--muted);padding:0.6rem 0;border-bottom:1px solid var(--border);}
+.features-list li span{color:var(--ripe);flex-shrink:0;}
+.divider{border:none;border-top:1px solid var(--border);margin:3.5rem 0;}
+footer{padding:2rem 2.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--cream);}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:1.5rem;list-style:none;}
+.footer-links a{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.footer-links a:hover{color:var(--cream);}
+.footer-copy{font-size:0.7rem;color:var(--border);}
+@media(max-width:600px){footer{flex-direction:column;text-align:center;align-items:center;}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Bearly Employed</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Games</a></li>
+    <li><a href="pandahunt.html">Panda Hunt</a></li>
+    <li><a href="bearlysudoku.html">Bearly Sudoku</a></li>
+    <li><a href="bearlyallfours.html">Bearly All Fours</a></li>
+    <li><a href="banglabloom.html">Bangla Bloom</a></li>
+    <li><a href="bearlyripe.html" class="active">Bearly Ripe</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Games</a>
+  <a href="pandahunt.html">Panda Hunt</a>
+  <a href="bearlysudoku.html">Bearly Sudoku</a>
+  <a href="bearlyallfours.html">Bearly All Fours</a>
+  <a href="banglabloom.html">Bangla Bloom</a>
+  <a href="bearlyripe.html">Bearly Ripe</a>
+  <a href="support.html">Support</a>
+  <a href="about.html">About</a>
+</div>
+
+<section class="hero">
+  <div class="hero-banner" id="heroBanner"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="breadcrumb"><a href="index.html">Games</a> / Bearly Ripe</p>
+    <img src="images/brlogo.png" alt="Bearly Ripe" class="hero-logo">
+    <p class="hero-tagline">A cozy harvest waiting to happen.</p>
+    <div class="soon-badge">Coming soon to iOS</div>
+  </div>
+
+</section>
+
+<div class="content">
+  <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">About the game</div><div class="sec-label-line"></div></div>
+  <h2 class="reveal">Let it <em>ripen.</em></h2>
+  <p class="body-text reveal d1">Bearly Ripe is a cozy harvest matching game for iOS. Sort, match, and tend your way through orchards and gardens as fruit ripens right before your eyes - a relaxing loop of growing, gathering, and starting again.</p>
+
+  <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">Play your way</div><div class="sec-label-line"></div></div>
+  <div class="modes-grid">
+    <div class="mode-card reveal">
+      <div class="mode-icon">🌳</div>
+      <p class="mode-title">Orchard Mode</p>
+      <p class="mode-desc">Work through hand-crafted harvest levels, unlocking new orchards and gardens as you go.</p>
+    </div>
+    <div class="mode-card reveal d1">
+      <div class="mode-icon">🧺</div>
+      <p class="mode-title">Zen Harvest</p>
+      <p class="mode-desc">Endless relaxed matching at your own pace. No timers, no pressure - just a good harvest.</p>
+    </div>
+    <div class="mode-card reveal d2">
+      <div class="mode-icon">📅</div>
+      <p class="mode-title">Daily Crop</p>
+      <p class="mode-desc">A fresh harvest puzzle every day. Keep your streak going and see what's in season.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="sec-label reveal"><div class="sec-label-line"></div><div class="sec-label-text">Features</div><div class="sec-label-line"></div></div>
+  <ul class="features-list reveal d1">
+    <li><span>🍎</span> Cozy fruit and garden matching gameplay</li>
+    <li><span>🌤️</span> Watch things ripen in real time as you play</li>
+    <li><span>🧑‍🌾</span> Unlock new orchards, gardens, and tools</li>
+    <li><span>🎨</span> Charming hand-drawn art style</li>
+    <li><span>📈</span> Track your harvest progress over time</li>
+    <li><span>🆓</span> Free to play - optional cosmetic purchases</li>
+    <li><span>📵</span> Play fully offline, anytime</li>
+    <li><span>👨‍👩‍👧</span> Relaxing and welcoming for all ages</li>
+  </ul>
+
+  <p style="text-align:center;margin-top:3rem;font-size:0.75rem;color:var(--muted);">
+    <a href="privacy-bearlyripe.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Privacy Policy</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="terms-bearlyripe.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Terms of Use</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="support.html" style="color:var(--muted);border-bottom:1px solid var(--border);">Support</a>
+  </p>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Bearly Employed</a>
+  <ul class="footer-links">
+    <li><a href="support.html">Support</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p class="footer-copy">© Bearly Employed</p>
+</footer>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+const heroBanner=document.getElementById('heroBanner');
+function updateParallax(){if(heroBanner){heroBanner.style.transform=`translateY(${window.scrollY*0.35}px)`;}}
+window.addEventListener('scroll',()=>requestAnimationFrame(updateParallax));
+updateParallax();
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
